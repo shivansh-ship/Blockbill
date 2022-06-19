@@ -1,0 +1,31 @@
+pragma solidity ^0.8.11;
+//SPDX-License-Identifier: MIT
+
+contract BillGenerate {
+    string public owner_name;
+    uint public bill_id;
+    uint public taxes;
+    uint public GrandTotal;
+    //mapping(address => uint ) public ItemBalances;
+
+    constructor(string memory own_name ,uint b_id, uint tax, uint totalprice) {
+        owner_name = own_name;
+        bill_id = b_id;
+        taxes = tax;
+        GrandTotal = totalprice;
+        //ItemBalances[address(this)] = 100;
+    }
+
+    function setBill(string memory owner_nme ,uint bi_id, uint TotTax, uint Total) public{
+        owner_name = owner_nme;
+        bill_id = bi_id;
+        taxes = TotTax;
+        GrandTotal = Total;
+
+    }
+
+    function getBill() public view returns (string memory, uint, uint, uint){
+        return (owner_name, bill_id, taxes, GrandTotal);
+    }
+
+}
